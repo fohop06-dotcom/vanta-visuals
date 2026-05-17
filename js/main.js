@@ -115,6 +115,13 @@ function initProfile() {
 
 async function checkAuth() {
   const token = localStorage.getItem('vantaToken');
+  updateHeaderAuth(token);
+
+  if (token && window.location.pathname.includes('login.html')) {
+    window.location.href = 'profile.html';
+    return;
+  }
+
   if (!token) {
     if (window.location.pathname.includes('profile.html')) {
       window.location.href = 'login.html';
@@ -137,6 +144,32 @@ async function checkAuth() {
       }
     } catch {
       alert('Ошибка подключения к серверу');
+    }
+  }
+}
+
+function updateHeaderAuth(token) {
+  const headerInner = document.querySelector('.header-inner');
+  if (!headerInner) return;
+
+  const existingAuth = headerInner.querySelector('.header-profile, .btn-outline[href="login.html"]');
+  if (token) {
+    if (!headerInner.querySelector('.header-profile')) {
+      const loginBtn = headerInner.querySelector('.btn-outline[href="login.html"]');
+      if (loginBtn) loginBtn.remove();
+
+      const profileDiv = document.createElement('div');
+      profileDiv.className = 'header-profile';
+      profileDiv.innerHTML = `
+        <a href="profile.html" class="nav-link">Профиль</a>
+        <button id="logoutBtn" class="btn btn-outline btn-sm">Выйти</button>
+      `;
+      headerInner.appendChild(profileDiv);
+
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('vantaToken');
+        window.location.href = 'index.html';
+      });
     }
   }
 }
