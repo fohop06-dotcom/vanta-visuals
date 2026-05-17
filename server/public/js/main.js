@@ -1,4 +1,6 @@
-const API_URL = '';
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3000'
+  : 'https://vanta-visuals-production.up.railway.app';
 
 document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
