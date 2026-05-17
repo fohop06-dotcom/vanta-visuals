@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanta Visuals — Профиль</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Vanta Visuals</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Главная</a>
+        <a href="facts.html" class="nav-link">Факты</a>
+        <a href="buy.html" class="nav-link">Купить</a>
+      </nav>
+      <div class="header-profile">
+        <span class="header-username" id="headerUsername">User</span>
+        <button id="logoutBtn" class="btn btn-outline btn-sm">Выйти</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="profile-section">
+      <div class="container">
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar" id="profileAvatar">V</div>
+            <div class="profile-info">
+              <h2 id="profileName">Username</h2>
+              <span class="profile-uid">UID: <span id="profileUid">000000</span></span>
+            </div>
+          </div>
+          <div class="profile-details">
+            <div class="detail-row">
+              <span class="detail-label">Дата регистрации</span>
+              <span class="detail-value" id="profileRegDate">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Подписка до</span>
+              <span class="detail-value" id="profileSubEnd">—</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Статус</span>
+              <span class="detail-value" id="profileStatus">
+                <span class="status-badge inactive">Не активна</span>
+              </span>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <div class="activation-box">
+              <h3>Активация подписки</h3>
+              <form id="activationForm" class="activation-form">
+                <input type="text" id="activationKey" placeholder="Введите ключ активации" required>
+                <button type="submit" class="btn btn-primary">Активировать</button>
+              </form>
+            </div>
+            <div class="hwid-box">
+              <h3>HWID</h3>
+              <p class="hwid-info">HWID определяется автоматически через лоадер</p>
+              <div class="hwid-value" id="hwidValue">Не определён</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Vanta Visuals. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
