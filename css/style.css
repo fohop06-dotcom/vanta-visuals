@@ -309,6 +309,121 @@ body {
   color: var(--text-secondary);
 }
 
+/* Comparison Slider */
+.comparison-section {
+  padding: 80px 0;
+  background: var(--bg-secondary);
+}
+
+.comparison-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: -32px;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comparison-slider {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: col-resize;
+  box-shadow: var(--shadow), var(--shadow-purple);
+}
+
+.comparison-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.comparison-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.comparison-image.after {
+  z-index: 1;
+  clip-path: inset(0 50% 0 0);
+}
+
+.comparison-image.before {
+  z-index: 0;
+}
+
+.comparison-label {
+  position: absolute;
+  top: 16px;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  pointer-events: none;
+}
+
+.label-after {
+  right: 16px;
+}
+
+.label-before {
+  left: 16px;
+}
+
+.comparison-handle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40px;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.handle-line {
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.handle-circle {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple-primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.handle-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Facts */
 .facts-section {
   padding: 80px 0;

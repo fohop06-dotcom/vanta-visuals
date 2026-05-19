@@ -2,6 +2,7 @@ const API_URL = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
+  initComparisonSlider();
   initAuth();
   initProfile();
   checkAuth();
@@ -18,6 +19,49 @@ function initFAQ() {
         if (!isActive) item.classList.add('active');
       });
     }
+  });
+}
+
+function initComparisonSlider() {
+  const slider = document.getElementById('comparisonSlider');
+  if (!slider) return;
+
+  const afterImage = slider.querySelector('.after');
+  const handle = document.getElementById('comparisonHandle');
+  let isDragging = false;
+
+  function updateSlider(x) {
+    const rect = slider.getBoundingClientRect();
+    let pos = ((x - rect.left) / rect.width) * 100;
+    pos = Math.max(0, Math.min(100, pos));
+    afterImage.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
+    handle.style.left = pos + '%';
+  }
+
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    updateSlider(e.clientX);
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) updateSlider(e.clientX);
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  slider.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    updateSlider(e.touches[0].clientX);
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging) updateSlider(e.touches[0].clientX);
+  });
+
+  window.addEventListener('touchend', () => {
+    isDragging = false;
   });
 }
 
